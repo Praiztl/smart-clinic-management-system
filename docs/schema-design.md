@@ -19,7 +19,7 @@ This document outlines the relational (MySQL) and document-based (MongoDB) schem
 | Field         | Type            | Description                         |
 |---------------|-----------------|-------------------------------------|
 | id            | BIGINT (PK)     | Unique doctor ID                    |
-| full_name     | VARCHAR(100)    | Doctor’s name                       |
+| full_name     | VARCHAR(100)    | Doctor's name                       |
 | email         | VARCHAR(100)    | Unique email                        |
 | specialty     | VARCHAR(50)     | Area of medical expertise           |
 | password      | VARCHAR(100)    | Encrypted password                  |
@@ -31,7 +31,7 @@ This document outlines the relational (MySQL) and document-based (MongoDB) schem
 | Field         | Type           | Description                         |
 |---------------|----------------|-------------------------------------|
 | id            | BIGINT (PK)    | Unique patient ID                   |
-| full_name     | VARCHAR(100)   | Patient’s name                      |
+| full_name     | VARCHAR(100)   | Patient's name                      |
 | email         | VARCHAR(100)   | Unique email                        |
 | phone         | VARCHAR(20)    | Phone number                        |
 | date_of_birth | DATE           | Date of birth                       |
@@ -46,7 +46,7 @@ This document outlines the relational (MySQL) and document-based (MongoDB) schem
 | patient_id       | BIGINT (FK)    | References Patient(id)                      |
 | doctor_id        | BIGINT (FK)    | References Doctor(id)                       |
 | appointment_time | DATETIME       | Scheduled time (validated to be future)     |
-| status           | VARCHAR(20)    | Status of appointment (Scheduled, Cancelled, etc.)
+| status           | VARCHAR(20)    | Status of appointment (Scheduled, Cancelled, etc.) |
 
 ---
 
@@ -72,6 +72,7 @@ Each document represents a prescription linked to an appointment.
   "notes": "Patient recovering well",
   "issuedAt": "2024-07-29T10:15:00Z"
 }
+```
 
 ---
 
