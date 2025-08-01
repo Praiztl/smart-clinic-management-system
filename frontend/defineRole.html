@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Select Role</title>
+</head>
+<body>
+  <h1>Select Your Role</h1>
+  <select id="roleSelect">
+    <option value="">-- Select Role --</option>
+    <option value="admin">Admin</option>
+    <option value="doctor">Doctor</option>
+    <option value="patient">Patient</option>
+  </select>
+  <button onclick="saveRole()">Continue</button>
+
+  <script>
+    function saveRole() {
+      const role = document.getElementById("roleSelect").value;
+      if (role) {
+        localStorage.setItem("userRole", role);
+        alert("Role saved! Redirecting...");
+        // Optionally redirect
+        // window.location.href = `${role}Dashboard.html`;
+      } else {
+        alert("Please select a role.");
+      }
+    }
+  </script>
+</body>
+</html>
