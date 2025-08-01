@@ -1,6 +1,5 @@
 package main.java.com.smartclinic.service;
 
-import main.java.com.smartclinic.dto.AppointmentDTO;
 import main.java.com.smartclinic.model.Appointment;
 import main.java.com.smartclinic.repository.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +19,25 @@ public class AppointmentService {
     }
 
     public Appointment createAppointment(Appointment appointment) {
-        // Optional: validate date not in the past
         if (appointment.getAppointmentTime().isBefore(LocalDateTime.now())) {
             throw new IllegalArgumentException("Appointment time cannot be in the past.");
         }
         return appointmentRepository.save(appointment);
     }
 
-    // Add more methods for update, cancel, etc. as needed
+    public Appointment updateAppointment(Long id, Appointment updatedAppointment) {
+        Appointment existing = appointmentRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Appointment not found"));
+
+        existing.setAppointmentTime(updatedAppointment.getAppointmentTime());
+        existing.setStatus(updatedAppointment.getStatus());
+        return appointmentRepository.save(existing);
+    }
+
+    public void cancelAppointment(Long id) {
+        if (!appointmentRepository.existsById(id)) {
+            throw new RuntimeException("Appointment not found.");
+        }
+        appointmentRepository.deleteById(id);
+    }
 }
